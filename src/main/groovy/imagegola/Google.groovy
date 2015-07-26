@@ -48,22 +48,13 @@ public class Google {
 			googleThread.run();
 			result = true;
 			// start the threads to process the balance pages based on pageLimit
-			int numOfThreads = numOfItems / NUM_PER_PAGE;
-/*			ThreadGroup tg = new ThreadGroup("Collectors");
-			Thread t = null;
+			int numOfThreads = 64 / NUM_PER_PAGE;
+			
 			for (int i = 1; i < numOfThreads; i++) {
-				String curUrlString = new String(urlString) + "&start="
-						+ NUM_PER_PAGE * i;
-				t = new Thread(tg, new GoogleThread(curUrlString, entityList));
-				t.start();
-				searchThreads.add(t);
+				String curUrlString = urlString+ "&start=" + (NUM_PER_PAGE * i);
+				googleThread = new GoogleThread(curUrlString, entityList);
+				googleThread.run();
 			}
-
-			Iterator it = searchThreads.iterator();
-			while (it.hasNext()) {
-				t = (Thread) it.next();
-				t.join();
-			}*/
 
 			processdone = true;
 
