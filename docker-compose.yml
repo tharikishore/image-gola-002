@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  grails-service:
+    container_name: container-appengine
+    image: open-image-jdk
+    build: 
+      context: dockerfiles
+      dockerfile: Dockerfile
+    volumes:
+     - ./:/sources
+     - /root/.grails:/root/.grails
+     - /root/.gradle:/root/.gradle
+     - /etc/localtime:/etc/localtime
+    working_dir: /sources
+    environment:
+      TERM: linux
+    ports:
+     - 9090:8888
+    command: tail -f README.md
