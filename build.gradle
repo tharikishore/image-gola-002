@@ -25,7 +25,7 @@ repositories {
 }
 
 appengine {
-    httpAddress = 0.0.0.0
+    httpAddress = "0.0.0.0"
     httpPort = 8888
 }
 
